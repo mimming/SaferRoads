@@ -34,14 +34,14 @@
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name"
+        android:label="SaferRoads"
         android:theme="@style/AppTheme">
         <!-- Since this sample records video from camera preview, locking the orientation to
             landscape. Landscape mode offers us more preview space with standard video aspect
             ratios (width > height) -->
         <activity
             android:name=".MainActivity"
-            android:label="SafeRides"
+            android:label="SaferRoads"
             android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

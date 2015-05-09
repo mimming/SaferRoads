@@ -57,7 +57,7 @@ public class MainActivity extends Activity {
     private boolean isRecording = false;
     private static final String TAG = "Recorder";
     private Button captureButton;
-
+    private static final String video_file = "/sdcard/DCIM/Camera/video.mp4";  // for now, will change.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,8 +75,8 @@ public class MainActivity extends Activity {
      * @param view the view generating the event.
      */
 
+    // Makes the file available for gallery and sharing.
     void publishScan() {
-        String video_file = "/sdcard/DCIM/Camera/video.mp4";
         MediaScannerConnection.scanFile(this, new String[]{video_file}, null,
                 new MediaScannerConnection.OnScanCompletedListener() {
                     public void onScanCompleted(String path, Uri uri) {
@@ -87,10 +87,10 @@ public class MainActivity extends Activity {
 
     void uploadYoutube() {
         publishScan();
-        Uri uri = Uri.fromFile(new File("/sdcard/DCIM/Camera/video.mp4"));
+        Uri uri = Uri.fromFile(new File(video_file));
         Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
         sharingIntent.setType("video/mp4");
-        sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT,"Title");
+        sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Title");
         sharingIntent.putExtra(android.content.Intent.EXTRA_STREAM, uri);
         sharingIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
    //     sharingIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -214,7 +214,7 @@ public class MainActivity extends Activity {
         // Step 4: Set output file
        // File folder = Environment.getExternalStoragePublicDirectory();
        // if (!folder.isDirectory()) folder.mkdir();
-        File newfile = new File("/sdcard/DCIM/Camera/video.mp4");
+        File newfile = new File(video_file);
         mMediaRecorder.setOutputFile(newfile.getAbsolutePath());
         Log.i("path on write: ", newfile.getAbsolutePath());
 //        mMediaRecorder.setOutputFile(CameraHelper.getOutputMediaFile(
@@ -250,9 +250,10 @@ public class MainActivity extends Activity {
             if (prepareVideoRecorder()) {
                 // Camera is available and unlocked, MediaRecorder is prepared,
                 // now you can start recording
-                mMediaRecorder.start();
 
+                mMediaRecorder.start();
                 isRecording = true;
+
             } else {
                 // prepare didn't work, release the camera
                 releaseMediaRecorder();
