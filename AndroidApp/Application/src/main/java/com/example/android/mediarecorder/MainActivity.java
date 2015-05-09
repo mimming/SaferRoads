@@ -61,7 +61,11 @@ public class MainActivity extends Activity {
     private boolean startedNewMediaStuff = false;
     private static final String TAG = "Recorder";
     private Button captureButton;
-    private static final String video_file = "/sdcard/DCIM/Camera/video.mp4";  // for now, will change.
+    private static final String video_file_prefix = "/sdcard/DCIM/Camera/video";  // for now, will change.
+    private static final String video_file_suffix = ".mp4";
+    private static String video_file = video_file_prefix + "0" + video_file_suffix;
+    private int batch = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,7 +75,7 @@ public class MainActivity extends Activity {
         captureButton = (Button) findViewById(R.id.button_capture);
 
         new MediaPrepareTask().execute(null, null, null);
-        new CountDownTimer(7000, 1000) {
+        new CountDownTimer(30000, 1000) {
 
             public void onTick(long millisUntilFinished) {
                 setCaptureButtonText(millisUntilFinished / 1000 + " Stop");
@@ -103,6 +107,8 @@ public class MainActivity extends Activity {
                             }
                         };
                     }.start();
+                batch = (batch + 1) % 3;
+                video_file = video_file_prefix + batch + video_file_suffix;
                 start();
             }
         }.start();
