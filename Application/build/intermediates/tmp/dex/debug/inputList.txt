@@ -1,7 +1,0 @@
-/home/smilitude/git/yt/MediaRecorder/Application/build/intermediates/classes/debug
-/home/smilitude/git/yt/MediaRecorder/Application/build/intermediates/pre-dexed/debug/internal_impl-21.0.2-35f988f8080ab9bc578a3b2a2da3b8f8d84a487e.jar
-/home/smilitude/git/yt/MediaRecorder/Application/build/intermediates/pre-dexed/debug/support-annotations-21.0.2-529b80aedb648dff6d8f77799948b485ce7bb1ef.jar
-/home/smilitude/git/yt/MediaRecorder/Application/build/intermediates/pre-dexed/debug/classes-d670b4c49a296ac0b06086e7c11364411ab8a241.jar
-/home/smilitude/git/yt/MediaRecorder/Application/build/intermediates/pre-dexed/debug/classes-a92198fe542a4b2a7e26c4d2d6980c0669b41831.jar
-/home/smilitude/git/yt/MediaRecorder/Application/build/intermediates/pre-dexed/debug/internal_impl-21.0.2-12dc1f04d7225a3de5bc31c60e40f3f5dadbfb44.jar
-/home/smilitude/git/yt/MediaRecorder/Application/build/intermediates/pre-dexed/debug/classes-b025f3e477cfdb46c2061bab641f9a61611c03c2.jar
