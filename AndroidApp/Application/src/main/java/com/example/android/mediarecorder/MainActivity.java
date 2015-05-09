@@ -63,6 +63,8 @@ import java.util.List;
  */
 public class MainActivity extends Activity {
 
+
+
     private final static String JENNYS_MYO = "F1:FC:03:E3:06:33";
 
 
@@ -89,7 +91,7 @@ public class MainActivity extends Activity {
         @Override
         public void onConnect(Myo myo, long timestamp) {
             // Set the text color of the text view to cyan when a Myo connects.
-            showToast("connected");
+            showToast("Myo connected!");
             uploadYouTubeDataApiBecauseAwesomeJavaHasLongMethodNames();
         }
         // onDisconnect() is called whenever a Myo has been disconnected.
@@ -172,7 +174,7 @@ public class MainActivity extends Activity {
 //                    mTextView.setText(getString(R.string.pose_waveout));
                     break;
                 case FINGERS_SPREAD:
-                    showToast("fingers spread");
+                    showToast("Finger spread detected. Uploading video.");
                     //TODO: Upload stuff to YouTube in the background
 
 //                    mTextView.setText(getString(R.string.pose_fingersspread));
@@ -215,12 +217,18 @@ public class MainActivity extends Activity {
 
         hub.attachByMacAddress(JENNYS_MYO);
 
-        showToast("I'm Alive!");
 
 
         setContentView(R.layout.sample_main);
 
         mPreview = (TextureView) findViewById(R.id.surface_view);
+        mPreview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showToast("Uploading video!");
+                uploadYouTubeDataApiBecauseAwesomeJavaHasLongMethodNames();
+            }
+        });
         captureButton = (Button) findViewById(R.id.button_capture);
 
         new MediaPrepareTask().execute(null, null, null);
@@ -485,6 +493,8 @@ public class MainActivity extends Activity {
 
         }
     }
+
+
 
     @Override
     protected void onDestroy() {

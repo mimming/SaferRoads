@@ -39,22 +39,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="MainActivity.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="MainActivity.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Application/src/main/java/com/example/android/mediarecorder/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="4470" max-vertical-offset="8816">
-              <caret line="299" column="0" selection-start-line="299" selection-start-column="0" selection-end-line="299" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.4730539" vertical-offset="2306" max-vertical-offset="9006">
+              <caret line="176" column="71" selection-start-line="176" selection-start-column="71" selection-end-line="176" selection-end-column="71" />
               <folding>
-                <element signature="e#0#18816#0" expanded="true" />
-                <element signature="e#2869#2870#0" expanded="true" />
-                <element signature="e#2940#2941#0" expanded="true" />
-                <element signature="e#5788#5808#0" expanded="true" />
-                <element signature="e#5930#5947#0" expanded="true" />
-                <element signature="e#6061#6079#0" expanded="true" />
-                <element signature="e#11445#11724#0" expanded="true" />
-                <element signature="e#11713#11714#0" expanded="true" />
-                <element signature="e#13298#13299#0" expanded="true" />
-                <element signature="e#13342#13343#0" expanded="true" />
+                <element signature="e#0#19096#0" expanded="true" />
+                <element signature="e#2871#2872#0" expanded="true" />
+                <element signature="e#2942#2943#0" expanded="true" />
+                <element signature="e#5795#5815#0" expanded="true" />
+                <element signature="e#5937#5954#0" expanded="true" />
+                <element signature="e#6068#6086#0" expanded="true" />
+                <element signature="e#8747#8986#0" expanded="true" />
+                <element signature="e#8975#8976#0" expanded="true" />
+                <element signature="e#11723#12002#0" expanded="true" />
+                <element signature="e#11991#11992#0" expanded="true" />
+                <element signature="e#13576#13577#0" expanded="true" />
+                <element signature="e#13620#13621#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -80,11 +82,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UploadVideo.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="UploadVideo.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Application/src/main/java/com/example/android/mediarecorder/UploadVideo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.026041666" vertical-offset="461" max-vertical-offset="3667">
-              <caret line="36" column="22" selection-start-line="36" selection-start-column="22" selection-end-line="36" selection-end-column="22" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="537" max-vertical-offset="3667">
+              <caret line="46" column="34" selection-start-line="46" selection-start-column="34" selection-end-line="46" selection-end-column="34" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#5222#5230#0" expanded="true" />
@@ -688,8 +690,8 @@
         <option value="$PROJECT_DIR$/Application/src/main/res/layout/sample_main.xml" />
         <option value="$PROJECT_DIR$/Application/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/Application/build.gradle" />
-        <option value="$PROJECT_DIR$/Application/src/main/java/com/example/android/mediarecorder/MainActivity.java" />
         <option value="$PROJECT_DIR$/Application/src/main/java/com/example/android/mediarecorder/UploadVideo.java" />
+        <option value="$PROJECT_DIR$/Application/src/main/java/com/example/android/mediarecorder/MainActivity.java" />
       </list>
     </option>
   </component>
@@ -1129,7 +1131,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3258786" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.6713681" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5909732" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1174,16 +1176,18 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="1634" max-vertical-offset="6213">
           <caret line="86" column="41" selection-start-line="86" selection-start-column="41" selection-end-line="86" selection-end-column="41" />
           <folding>
-            <element signature="e#0#18816#0" expanded="true" />
-            <element signature="e#2869#2870#0" expanded="true" />
-            <element signature="e#2940#2941#0" expanded="true" />
-            <element signature="e#5788#5808#0" expanded="true" />
-            <element signature="e#5930#5947#0" expanded="true" />
-            <element signature="e#6061#6079#0" expanded="true" />
-            <element signature="e#11445#11724#0" expanded="true" />
-            <element signature="e#11713#11714#0" expanded="true" />
-            <element signature="e#13298#13299#0" expanded="true" />
-            <element signature="e#13342#13343#0" expanded="true" />
+            <element signature="e#0#19096#0" expanded="true" />
+            <element signature="e#2871#2872#0" expanded="true" />
+            <element signature="e#2942#2943#0" expanded="true" />
+            <element signature="e#5795#5815#0" expanded="true" />
+            <element signature="e#5937#5954#0" expanded="true" />
+            <element signature="e#6068#6086#0" expanded="true" />
+            <element signature="e#8747#8986#0" expanded="true" />
+            <element signature="e#8975#8976#0" expanded="true" />
+            <element signature="e#11723#12002#0" expanded="true" />
+            <element signature="e#11991#11992#0" expanded="true" />
+            <element signature="e#13576#13577#0" expanded="true" />
+            <element signature="e#13620#13621#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1211,16 +1215,18 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#18816#0" expanded="true" />
-            <element signature="e#2869#2870#0" expanded="true" />
-            <element signature="e#2940#2941#0" expanded="true" />
-            <element signature="e#5788#5808#0" expanded="true" />
-            <element signature="e#5930#5947#0" expanded="true" />
-            <element signature="e#6061#6079#0" expanded="true" />
-            <element signature="e#11445#11724#0" expanded="true" />
-            <element signature="e#11713#11714#0" expanded="true" />
-            <element signature="e#13298#13299#0" expanded="true" />
-            <element signature="e#13342#13343#0" expanded="true" />
+            <element signature="e#0#19096#0" expanded="true" />
+            <element signature="e#2871#2872#0" expanded="true" />
+            <element signature="e#2942#2943#0" expanded="true" />
+            <element signature="e#5795#5815#0" expanded="true" />
+            <element signature="e#5937#5954#0" expanded="true" />
+            <element signature="e#6068#6086#0" expanded="true" />
+            <element signature="e#8747#8986#0" expanded="true" />
+            <element signature="e#8975#8976#0" expanded="true" />
+            <element signature="e#11723#12002#0" expanded="true" />
+            <element signature="e#11991#11992#0" expanded="true" />
+            <element signature="e#13576#13577#0" expanded="true" />
+            <element signature="e#13620#13621#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1334,34 +1340,36 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Application/src/main/java/com/example/android/mediarecorder/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="4470" max-vertical-offset="8816">
-          <caret line="299" column="0" selection-start-line="299" selection-start-column="0" selection-end-line="299" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#18816#0" expanded="true" />
-            <element signature="e#2869#2870#0" expanded="true" />
-            <element signature="e#2940#2941#0" expanded="true" />
-            <element signature="e#5788#5808#0" expanded="true" />
-            <element signature="e#5930#5947#0" expanded="true" />
-            <element signature="e#6061#6079#0" expanded="true" />
-            <element signature="e#11445#11724#0" expanded="true" />
-            <element signature="e#11713#11714#0" expanded="true" />
-            <element signature="e#13298#13299#0" expanded="true" />
-            <element signature="e#13342#13343#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Application/src/main/java/com/example/android/mediarecorder/UploadVideo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.026041666" vertical-offset="461" max-vertical-offset="3667">
-          <caret line="36" column="22" selection-start-line="36" selection-start-column="22" selection-end-line="36" selection-end-column="22" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="537" max-vertical-offset="3667">
+          <caret line="46" column="34" selection-start-line="46" selection-start-column="34" selection-end-line="46" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#5222#5230#0" expanded="true" />
             <element signature="e#7011#8113#0" expanded="true" />
             <element signature="e#8098#8099#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Application/src/main/java/com/example/android/mediarecorder/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4730539" vertical-offset="2306" max-vertical-offset="9006">
+          <caret line="176" column="71" selection-start-line="176" selection-start-column="71" selection-end-line="176" selection-end-column="71" />
+          <folding>
+            <element signature="e#0#19096#0" expanded="true" />
+            <element signature="e#2871#2872#0" expanded="true" />
+            <element signature="e#2942#2943#0" expanded="true" />
+            <element signature="e#5795#5815#0" expanded="true" />
+            <element signature="e#5937#5954#0" expanded="true" />
+            <element signature="e#6068#6086#0" expanded="true" />
+            <element signature="e#8747#8986#0" expanded="true" />
+            <element signature="e#8975#8976#0" expanded="true" />
+            <element signature="e#11723#12002#0" expanded="true" />
+            <element signature="e#11991#11992#0" expanded="true" />
+            <element signature="e#13576#13577#0" expanded="true" />
+            <element signature="e#13620#13621#0" expanded="true" />
           </folding>
         </state>
       </provider>
