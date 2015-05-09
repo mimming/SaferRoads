@@ -90,6 +90,7 @@ public class MainActivity extends Activity {
         public void onConnect(Myo myo, long timestamp) {
             // Set the text color of the text view to cyan when a Myo connects.
             showToast("connected");
+            uploadYouTubeDataApiBecauseAwesomeJavaHasLongMethodNames();
         }
         // onDisconnect() is called whenever a Myo has been disconnected.
         @Override
@@ -156,7 +157,7 @@ public class MainActivity extends Activity {
 
                     break;
                 case FIST:
-//                    showToast("fist");
+                    showToast("fist");
 
 //                    mTextView.setText(getString(R.string.pose_fist));
                     break;
@@ -175,6 +176,7 @@ public class MainActivity extends Activity {
                     //TODO: Upload stuff to YouTube in the background
 
 //                    mTextView.setText(getString(R.string.pose_fingersspread));
+                    uploadYouTubeDataApiBecauseAwesomeJavaHasLongMethodNames();
                     break;
             }
             if (pose != Pose.UNKNOWN && pose != Pose.REST) {
@@ -213,7 +215,7 @@ public class MainActivity extends Activity {
 
         hub.attachByMacAddress(JENNYS_MYO);
 
-        showToast("hello1");
+        showToast("I'm Alive!");
 
 
         setContentView(R.layout.sample_main);
@@ -276,6 +278,26 @@ public class MainActivity extends Activity {
                         Log.d(TAG, "onScanCompleted uri " + uri);
                     }
                 });
+    }
+
+
+    void uploadYouTubeDataApiBecauseAwesomeJavaHasLongMethodNames() {
+
+        // TODO get the filenames of the videos
+        final String videoFile = "/sdcard/DCIM/Camera/video0.mp4";
+
+        // create an authenticated client
+        new AsyncTask<Void, Void, Void>() {
+
+            @Override
+            protected Void doInBackground(Void... params) {
+//                showToast("uploading " + videoFile);
+
+                UploadVideo.uploadVideo(videoFile);
+                return null;
+            }
+        }.execute();
+
     }
 
     void uploadYoutube() {
