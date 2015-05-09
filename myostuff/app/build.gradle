@@ -22,8 +22,7 @@ android {
 dependencies {
     repositories {
         maven {
-            //TODO: change to a relative path
-            url '/Users/mimming/code/myostuff/app/myo-android-sdk-0.10.0/myorepository'
+            url '../myo-android-sdk-0.10.0/myorepository'
         }
     }
 

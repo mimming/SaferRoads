@@ -21,6 +21,7 @@ import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Intent;
+import android.graphics.Color;
 import android.hardware.Camera;
 import android.media.CamcorderProfile;
 import android.media.MediaRecorder;
@@ -37,8 +38,17 @@ import android.view.Menu;
 import android.view.TextureView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.android.common.media.CameraHelper;
+import com.thalmic.myo.AbstractDeviceListener;
+import com.thalmic.myo.Arm;
+import com.thalmic.myo.DeviceListener;
+import com.thalmic.myo.Hub;
+import com.thalmic.myo.Myo;
+import com.thalmic.myo.Pose;
+import com.thalmic.myo.Quaternion;
+import com.thalmic.myo.XDirection;
 
 import org.apache.http.cookie.SetCookie;
 
@@ -53,6 +63,9 @@ import java.util.List;
  */
 public class MainActivity extends Activity {
 
+    private final static String JENNYS_MYO = "F1:FC:03:E3:06:33";
+
+
     private Camera mCamera;
     private TextureView mPreview;
     private MediaRecorder mMediaRecorder;
@@ -66,9 +79,143 @@ public class MainActivity extends Activity {
     private static String video_file = video_file_prefix + "0" + video_file_suffix;
     private int batch = 0;
 
+    public void showToast(String toast) {
+        Toast.makeText(this, toast , Toast.LENGTH_SHORT).show();
+    }
+
+
+    private DeviceListener mListener = new AbstractDeviceListener() {
+        // onConnect() is called whenever a Myo has been connected.
+        @Override
+        public void onConnect(Myo myo, long timestamp) {
+            // Set the text color of the text view to cyan when a Myo connects.
+            showToast("connected");
+        }
+        // onDisconnect() is called whenever a Myo has been disconnected.
+        @Override
+        public void onDisconnect(Myo myo, long timestamp) {
+            // Set the text color of the text view to red when a Myo disconnects.
+//            showToast("disconnected");
+        }
+        // onArmSync() is called whenever Myo has recognized a Sync Gesture after someone has put it on their
+        // arm. This lets Myo know which arm it's on and which way it's facing.
+        @Override
+        public void onArmSync(Myo myo, long timestamp, Arm arm, XDirection xDirection) {
+//            showToast("sync'd with arm " + arm.name());
+        }
+        // onArmUnsync() is called whenever Myo has detected that it was moved from a stable position on a person's arm after
+        // it recognized the arm. Typically this happens when someone takes Myo off of their arm, but it can also happen
+        // when Myo is moved around on the arm.
+        @Override
+        public void onArmUnsync(Myo myo, long timestamp) {
+//            showToast("lost arm :(");
+
+        }
+        // onUnlock() is called whenever a synced Myo has been unlocked. Under the standard locking
+        // policy, that means poses will now be delivered to the listener.
+        @Override
+        public void onUnlock(Myo myo, long timestamp) {
+
+        }
+        // onLock() is called whenever a synced Myo has been locked. Under the standard locking
+        // policy, that means poses will no longer be delivered to the listener.
+        @Override
+        public void onLock(Myo myo, long timestamp) {
+        }
+        // onOrientationData() is called whenever a Myo provides its current orientation,
+        // represented as a quaternion.
+        @Override
+        public void onOrientationData(Myo myo, long timestamp, Quaternion rotation) {
+            // do nothing
+        }
+        // onPose() is called whenever a Myo provides a new pose.
+        @Override
+        public void onPose(Myo myo, long timestamp, Pose pose) {
+
+            // Handle the cases of the Pose enumeration, and change the text of the text view
+            // based on the pose we receive.
+            switch (pose) {
+                case UNKNOWN:
+//                    showToast("no gesture");
+
+//                    mTextView.setText("no pose");
+                    break;
+                case REST:
+                case DOUBLE_TAP:
+                    int restTextId = R.string.hello_world;
+                    switch (myo.getArm()) {
+                        case LEFT:
+                            restTextId = R.string.arm_left;
+                            break;
+                        case RIGHT:
+                            restTextId = R.string.arm_right;
+                            break;
+                    }
+//                    mTextView.setText(getString(restTextId));
+//                    showToast("double tap");
+
+                    break;
+                case FIST:
+//                    showToast("fist");
+
+//                    mTextView.setText(getString(R.string.pose_fist));
+                    break;
+                case WAVE_IN:
+//                    showToast("wave in");
+
+//                    mTextView.setText(getString(R.string.pose_wavein));
+                    break;
+                case WAVE_OUT:
+//                    showToast("wave out");
+
+//                    mTextView.setText(getString(R.string.pose_waveout));
+                    break;
+                case FINGERS_SPREAD:
+                    showToast("fingers spread");
+                    //TODO: Upload stuff to YouTube in the background
+
+//                    mTextView.setText(getString(R.string.pose_fingersspread));
+                    break;
+            }
+            if (pose != Pose.UNKNOWN && pose != Pose.REST) {
+                // Tell the Myo to stay unlocked until told otherwise. We do that here so you can
+                // hold the poses without the Myo becoming locked.
+                myo.unlock(Myo.UnlockType.HOLD);
+                // Notify the Myo that the pose has resulted in an action, in this case changing
+                // the text on the screen. The Myo will vibrate.
+                myo.notifyUserAction();
+            } else {
+                // Tell the Myo to stay unlocked only for a short period. This allows the Myo to
+                // stay unlocked while poses are being performed, but lock after inactivity.
+                myo.unlock(Myo.UnlockType.TIMED);
+            }
+        }
+    };
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Hub hub = Hub.getInstance();
+
+        if (!hub.init(this, getPackageName())) {
+            // We can't do anything with the Myo device if the Hub can't be initialized, so exit.
+            Toast.makeText(this, "Couldn't initialize Hub", Toast.LENGTH_SHORT).show();
+            finish();
+            return;
+        }
+
+        hub.setLockingPolicy(Hub.LockingPolicy.NONE);
+
+        // Next, register for DeviceListener callbacks.
+        hub.addListener(mListener);
+
+        hub.attachByMacAddress(JENNYS_MYO);
+
+        showToast("hello1");
+
+
         setContentView(R.layout.sample_main);
 
         mPreview = (TextureView) findViewById(R.id.surface_view);
@@ -83,14 +230,13 @@ public class MainActivity extends Activity {
 
             public void onFinish() {
                 // stop recording and release camera
-                if (isRecording) {
+                if (isRecording && mMediaRecorder != null) {
                     mMediaRecorder.stop();  // stop the recording
                     publishScan();
                     releaseMediaRecorder(); // release the MediaRecorder object
                     mCamera.lock();         // take camera access back from MediaRecorder
 
-                    // inform the user that recording has stopped
-                    setCaptureButtonText("Capture");
+                    setCaptureButtonText("Stop");
                     isRecording = false;
                         startedNewMediaStuff = false;
                         releaseCamera();
@@ -120,7 +266,6 @@ public class MainActivity extends Activity {
      * stops recording, releases {@link android.media.MediaRecorder} and {@link android.hardware.Camera}. When not recording,
      * it prepares the {@link android.media.MediaRecorder} and starts recording.
      *
-     * @param view the view generating the event.
      */
 
     // Makes the file available for gallery and sharing.
@@ -319,4 +464,14 @@ public class MainActivity extends Activity {
         }
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Hub.getInstance().removeListener(mListener);
+        if (isFinishing()) {
+            // The Activity is finishing, so shutdown the Hub. This will disconnect from the Myo.
+            Hub.getInstance().shutdown();
+        }
+
+    }
 }
