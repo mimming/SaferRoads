@@ -29,6 +29,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
@@ -38,6 +39,8 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.android.common.media.CameraHelper;
+
+import org.apache.http.cookie.SetCookie;
 
 import java.io.File;
 import java.io.IOException;
@@ -55,6 +58,7 @@ public class MainActivity extends Activity {
     private MediaRecorder mMediaRecorder;
 
     private boolean isRecording = false;
+    private boolean startedNewMediaStuff = false;
     private static final String TAG = "Recorder";
     private Button captureButton;
     private static final String video_file = "/sdcard/DCIM/Camera/video.mp4";  // for now, will change.
@@ -65,6 +69,44 @@ public class MainActivity extends Activity {
 
         mPreview = (TextureView) findViewById(R.id.surface_view);
         captureButton = (Button) findViewById(R.id.button_capture);
+
+        new MediaPrepareTask().execute(null, null, null);
+        new CountDownTimer(7000, 1000) {
+
+            public void onTick(long millisUntilFinished) {
+                setCaptureButtonText(millisUntilFinished / 1000 + " Stop");
+            }
+
+            public void onFinish() {
+                // stop recording and release camera
+                if (isRecording) {
+                    mMediaRecorder.stop();  // stop the recording
+                    publishScan();
+                    releaseMediaRecorder(); // release the MediaRecorder object
+                    mCamera.lock();         // take camera access back from MediaRecorder
+
+                    // inform the user that recording has stopped
+                    setCaptureButtonText("Capture");
+                    isRecording = false;
+                        startedNewMediaStuff = false;
+                        releaseCamera();
+                    }
+                    new CountDownTimer(500, 100) {
+                        public void onTick(long milli) {}
+                        public void onFinish() {
+                            if (isRecording == false && startedNewMediaStuff == false) {
+                                startedNewMediaStuff = true;
+                                new MediaPrepareTask().execute(null, null, null);
+                                setCaptureButtonText("Capture");
+                                Log.w(TAG, "starting a new mediapreparetask");
+
+                            }
+                        };
+                    }.start();
+                start();
+            }
+        }.start();
+
     }
 
     /**
@@ -106,8 +148,6 @@ public class MainActivity extends Activity {
             mMediaRecorder.stop();  // stop the recording
             publishScan();
 
-
-
             releaseMediaRecorder(); // release the MediaRecorder object
             mCamera.lock();         // take camera access back from MediaRecorder
 
@@ -115,6 +155,7 @@ public class MainActivity extends Activity {
             setCaptureButtonText("Capture");
             isRecording = false;
             releaseCamera();
+            finish();
             // END_INCLUDE(stop_release_media_recorder)
 
             // uploadYoutube();
@@ -253,7 +294,6 @@ public class MainActivity extends Activity {
 
                 mMediaRecorder.start();
                 isRecording = true;
-
             } else {
                 // prepare didn't work, release the camera
                 releaseMediaRecorder();
